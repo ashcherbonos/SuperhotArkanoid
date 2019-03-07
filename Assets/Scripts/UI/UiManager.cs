@@ -41,7 +41,7 @@ namespace SuperHot.UI
 
     public void LoadLevel(int id)
     {
-      Main.Model.LoadLevel(id);
+      Main.Store.levelID.SetAndTriger(id);
     }
   }
 }

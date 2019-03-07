@@ -22,7 +22,7 @@ namespace SuperHot.Core
     public Box<bool> shooting = new Box<bool>(false);
     public Box<Trigger> multipleBalls = new Box<Trigger>(Trigger.Trigger);
     public Box<IBallBehaviour> ballsBehaviour = new Box<IBallBehaviour>(new StandartBallBehavior());
-    public Box<Trigger> newLevelStarted = new Box<Trigger>(Trigger.Trigger);
+    public Box<int> levelID = new Box<int>(0);
   }
 
   public enum GameStatus

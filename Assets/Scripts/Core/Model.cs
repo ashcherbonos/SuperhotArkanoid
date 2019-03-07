@@ -23,6 +23,11 @@ namespace SuperHot.Core
       Main.Store.timeIsRuning.Bind(s => Time.timeScale = s ? 1 : 0);
       Main.Store.gameStatus.Bind(s => { if (s != GameStatus.Playing) Time.timeScale = 0; });
       Main.Store.blocksCount.LazyBind(s => { if (s == 0) Main.Store.gameStatus.Value = GameStatus.Loose; });
+      Main.Store.levelID.LazyBind(s =>
+      {
+        CurrentLevel = s;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+      });
     }
 
     public void Start()
@@ -30,12 +35,6 @@ namespace SuperHot.Core
       Main.Store.gameStatus.Value = GameStatus.Playing;
       Loader.Instantiate<GameObject>(AddressableNames.Levels[CurrentLevel]);
       ballsManager.SpawnBall();
-    }
-
-    public void LoadLevel(int levelID = 0)
-    {
-      CurrentLevel = levelID;
-      SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
   }
 }

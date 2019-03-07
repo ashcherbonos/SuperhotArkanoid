@@ -33,6 +33,12 @@ namespace SuperHot.Core
       }
     }
 
+    public void SetAndTriger(T value)
+    {
+      storedValue = value;
+      Trigger();
+    }
+
     public void Bind(Action<T> listener)
     {
       LazyBind(listener);
